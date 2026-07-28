@@ -1,26 +1,30 @@
 package com.example.appdimex.model;
 
+import com.example.appdimex.Enums.Afiliacion;
+
+import java.sql.Date;
+
 public class Prospecto {
 
     private int idProspecto;
     private String nombre;
-    private int pension;
+    private String apellidos;
+    private int telefono;
+    private Afiliacion afiliado;
+    private String banco;
+    private Date fechaNacimiento;
     private String direccion;
 
-    public Prospecto(int idProspecto, String nombre, int pension, String direccion) {
-        this.idProspecto = idProspecto;
+    public Prospecto( String nombre, String apellidos, int telefono, Afiliacion afiliado, String banco, Date fechaNacimiento, String direccion) {
         this.nombre = nombre;
-        this.pension = pension;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.afiliado = afiliado;
+        this.banco = banco;
+        this.fechaNacimiento = fechaNacimiento;
         this.direccion = direccion;
     }
-
-    public Prospecto( String nombre, int pension, String direccion) {
-        this.nombre = nombre;
-        this.pension = pension;
-        this.direccion = direccion;
-    }
-
-    public Prospecto() {
+    public Prospecto(){
 
     }
 
@@ -40,12 +44,44 @@ public class Prospecto {
         this.nombre = nombre;
     }
 
-    public int getPension() {
-        return pension;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setPension(int pension) {
-        this.pension = pension;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public Afiliacion getAfiliado() {
+        return afiliado;
+    }
+
+    public void setAfiliado(Afiliacion afiliado) {
+        this.afiliado = afiliado;
+    }
+
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getDireccion() {
