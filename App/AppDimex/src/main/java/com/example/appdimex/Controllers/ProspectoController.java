@@ -20,9 +20,9 @@ public class ProspectoController {
 
     @FXML
     public void initialize() {
-        System.out.println("Inicializando ventana y registrando prospecto de prueba...");
-        Prospecto nuevoProspecto = new Prospecto("Carlos Mendoza", 12500, "Av. Hidalgo 456, Col. Centro");
-        ProspectoDao prospectoDao = new ProspectoDao();
-        prospectoDao.registrar(nuevoProspecto);
+//        System.out.println("Inicializando ventana y registrando prospecto de prueba...");
+//        Prospecto nuevoProspecto = new Prospecto("Carlos Mendoza", 12500, "Av. Hidalgo 456, Col. Centro");
+//        ProspectoDao prospectoDao = new ProspectoDao();
+//        prospectoDao.registrar(nuevoProspecto);
     }
 }
