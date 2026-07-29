@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appdimex.Controllers.CotizacionController">
     <children>
-        <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="650.0" prefWidth="340.0">
+        <AnchorPane stylesheets="@EstiloMain.css" layoutX="5.0" layoutY="5.0" prefHeight="650.0" prefWidth="340.0">
             <children>
                 <Pane id="logo" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="50.0">
                     <children>

@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.appdimex.Controllers.ProspectoController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<AnchorPane prefHeight="650.0" prefWidth="340.0" stylesheets="@EstiloMain.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appdimex.Controllers.MainController">
+    <children>
+        <AnchorPane prefHeight="650.0" prefWidth="340.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane id="logo" layoutX="16.0" layoutY="16.0" prefHeight="50.0" prefWidth="50.0" styleClass="logo-container">
+                    <children>
+                        <ImageView fx:id="logoImageView" fitHeight="50.0" fitWidth="50.0" preserveRatio="true" />
+                    </children>
+                </Pane>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+                <MenuButton layoutX="245.0" layoutY="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Menú">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Consultar" />
+                        <MenuItem mnemonicParsing="false" text="Eliminar" />
+                        <MenuItem mnemonicParsing="false" text="Modificar" />
+                    </items>
+                </MenuButton>
+
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="95.0" prefHeight="90.0" prefWidth="300.0" styleClass="welcome-label" text="Bienvenido a tu aplicación DIMEX" textAlignment="CENTER" wrapText="true" />
+
+                <Button fx:id="reProspecto" layoutX="25.0" layoutY="280.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="135.0" styleClass="btn-action" text="Registrar&#10;Prospecto" textAlignment="CENTER" wrapText="true" />
+
+                <Button fx:id="consProspectos" layoutX="180.0" layoutY="280.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="135.0" styleClass="btn-action" text="Consultar&#10;Prospectos" textAlignment="CENTER" wrapText="true" />
+
+                <Button fx:id="cotizarButton" layoutX="25.0" layoutY="410.0" mnemonicParsing="false" onAction="#abrirCotizacion" prefHeight="75.0" prefWidth="290.0" styleClass="btn-highlight" text="Cotización Express" textAlignment="CENTER" wrapText="true" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

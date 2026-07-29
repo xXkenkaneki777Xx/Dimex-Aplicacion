@@ -5,11 +5,19 @@ import com.example.appdimex.Enums.TipoTransaccion;
 import com.example.appdimex.model.PlanPago;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class CotizacionController {
@@ -26,6 +34,8 @@ public class CotizacionController {
     private Button cotizarButton;
     @FXML
     private Button borrarButton;
+    @FXML
+    private ImageView logoImageView;
 
     @FXML
     private TableView<PlanPago> cotizacionTableView;
@@ -41,6 +51,7 @@ public class CotizacionController {
         configurarChoiceBox();
         configurarTabla();
         configurarBotones();
+        cargarLogo();
     }
 
     private void configurarChoiceBox() {
@@ -167,6 +178,35 @@ public class CotizacionController {
         } catch (Exception e) {
             e.printStackTrace();
             mostrarAlerta("Error", "Ocurrió un error inesperado: " + e.getMessage());
+        }
+    }
+
+    private void cargarLogo() {
+        try {
+            Image image = new Image(getClass().getResourceAsStream("/imagenes/logo.jpg"));
+            if (image != null && !image.isError()) {
+                logoImageView.setImage(image);
+                logoImageView.setFitWidth(50);
+                logoImageView.setFitHeight(50);
+                logoImageView.setPreserveRatio(true);
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar logo: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void regresarAlMain(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/main-view.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo regresar a la pantalla principal: " + e.getMessage());
         }
     }
 

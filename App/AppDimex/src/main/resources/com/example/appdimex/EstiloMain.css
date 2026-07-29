@@ -1,0 +1,112 @@
+.root {
+    -fx-background-color: #F4F7F9;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.label {
+    -fx-text-fill: #0F2A4A;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.choice-box {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 8px;
+}
+
+.choice-box:hover {
+    -fx-border-color: #00A859;
+}
+
+.text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 10px;
+    -fx-alignment: center;
+    -fx-text-fill: #0F2A4A;
+    -fx-font-weight: bold;
+}
+
+.text-field:focused {
+    -fx-border-color: #00A859;
+    -fx-border-width: 2px;
+}
+
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 6, 0, 0, 2);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0F2A4A;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 35px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #F1F5F9;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F8FAFC;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #E6F4EA;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #00A859;
+    -fx-font-weight: bold;
+}
+
+#cotizarButton {
+    -fx-background-color: linear-gradient(to right, #00A859, #008748);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 89, 0.3), 6, 0, 0, 2);
+}
+
+#cotizarButton:hover {
+    -fx-background-color: #008748;
+}
+
+#borrarButton {
+    -fx-background-color: #E2E8F0;
+    -fx-text-fill: #0F2A4A;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+#borrarButton:hover {
+    -fx-background-color: #CBD5E1;
+}
+
+.menu-button {
+    -fx-background-color: #E2E8F0;
+    -fx-text-fill: #0F2A4A;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
