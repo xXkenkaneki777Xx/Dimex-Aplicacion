@@ -9,6 +9,9 @@ module com.example.appdimex {
     requires java.sql;
     requires java.desktop;
 
+
+    opens com.example.appdimex.model to javafx.base, javafx.fxml;
+
     opens com.example.appdimex to javafx.fxml;
     exports com.example.appdimex;
     exports com.example.appdimex.Controllers;

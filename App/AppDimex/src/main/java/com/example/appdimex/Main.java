@@ -12,6 +12,7 @@ public class Main extends Application {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/RegistroP.fxml"));
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/Cotizacion.fxml"));
             Parent root = loader.load();
 
 
