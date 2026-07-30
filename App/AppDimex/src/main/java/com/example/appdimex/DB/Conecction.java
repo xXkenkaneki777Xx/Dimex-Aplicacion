@@ -6,7 +6,8 @@ import java.sql.DriverManager;
 public class Conecction {
     private static final String URL = "jdbc:mysql://localhost:3306/dbdimex";
     private static final String USER = "root";
-    private static final String PASSWORD = "Leviat@n45";
+    private static final String PASSWORD = "8787";
+//    private static final String PASSWORD = "Leviat@n45";
 
     public static Connection conectar() {
         try {
