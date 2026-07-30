@@ -1,11 +1,11 @@
 package com.example.appdimex.DB;
 
+import com.example.appdimex.Enums.Afiliacion;
 import com.example.appdimex.model.Prospecto;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProspectoDao {
 
@@ -21,7 +21,7 @@ public class ProspectoDao {
             ps.setString(2, prospecto.getApellidos());
             ps.setInt(3, prospecto.getTelefono());
             String afiliacion = prospecto.getAfiliado().name();
-            System.out.println("📝 Afiliación a guardar: '" + afiliacion + "'");
+            System.out.println(" Afiliación a guardar: '" + afiliacion + "'");
             ps.setString(4, afiliacion);
             ps.setString(5, prospecto.getBanco());
             ps.setDate(6, prospecto.getFechaNacimiento());
@@ -43,10 +43,78 @@ public class ProspectoDao {
             e.printStackTrace();
         }
     }
-    public void consultar(Prospecto prospecto){
-        String nombre = prospecto.getNombre();
-        String apellidos = prospecto.getApellidos();
-        String sql = "SELECT * FROM prospecto WHERE nombre = '"+nombre+"' AND apellidos = '"+apellidos+"' ;";
+    public List<Prospecto> consultar(String nombre, String apellidos) {
+        List<Prospecto> resultados = new ArrayList<>();
 
+        // ✅ Usando PreparedStatement (SEGURO contra inyección SQL)
+        String sql = "SELECT * FROM prospecto WHERE nombre LIKE ? AND apellidos LIKE ?";
+
+        try (Connection con = Conecction.conectar();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            // Configurar los parámetros con comodines para búsqueda parcial
+            ps.setString(1, "%" + nombre + "%");
+            ps.setString(2, "%" + apellidos + "%");
+
+            System.out.println(" Buscando: Nombre='" + nombre + "', Apellidos='" + apellidos + "'");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Prospecto prospecto = new Prospecto();
+                //prospecto.setIdProspecto(rs.getInt("idprospecto"));
+                prospecto.setNombre(rs.getString("nombre"));
+                prospecto.setApellidos(rs.getString("apellidos"));
+                prospecto.setTelefono(rs.getInt("telefono"));
+                prospecto.setAfiliado(Afiliacion.valueOf(rs.getString("afiliado")));
+                prospecto.setBanco(rs.getString("banco"));
+                prospecto.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+                prospecto.setDireccion(rs.getString("direccion"));
+
+                resultados.add(prospecto);
+            }
+
+            System.out.println("Encontrados " + resultados.size() + " prospectos");
+
+        } catch (SQLException e) {
+            System.err.println("Error al consultar: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return resultados;
+    }
+    public List<Prospecto> consultarTodos() {
+        List<Prospecto> resultados = new ArrayList<>();
+        String sql = "SELECT * FROM prospecto";
+
+        try (Connection con = Conecction.conectar();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Prospecto p = new Prospecto();
+                //p.setIdProspecto(rs.getInt("idprospecto"));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellidos(rs.getString("apellidos"));
+                p.setTelefono(rs.getInt("telefono"));
+
+                String afiliacionStr = rs.getString("afiliado");
+                if (afiliacionStr != null) {
+                    p.setAfiliado(Afiliacion.valueOf(afiliacionStr));
+                }
+
+                p.setBanco(rs.getString("banco"));
+                p.setFechaNacimiento(rs.getDate("fechaNacimiento"));
+                p.setDireccion(rs.getString("direccion"));
+
+                resultados.add(p);
+            }
+
+        } catch (SQLException e) {
+            System.err.println(" Error al consultar todos: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return resultados;
     }
 }

@@ -11,8 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
 
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/Cotizacion.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/main-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/RegistroP.fxml"));
             Parent root = loader.load();
 
 

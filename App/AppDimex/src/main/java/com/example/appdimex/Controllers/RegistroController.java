@@ -2,12 +2,18 @@ package com.example.appdimex.Controllers;
 
 import com.example.appdimex.DB.ProspectoDao;
 import com.example.appdimex.Enums.Afiliacion;
+import com.example.appdimex.Views.AyudaView;
 import com.example.appdimex.model.Prospecto;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Date;
 
 public class RegistroController {
@@ -38,14 +44,71 @@ public class RegistroController {
 
     @FXML
     private Button cancelarButton;
+    @FXML
+    private MenuItem consultarMenuItem;
+    @FXML
+    private MenuItem eliminarMenuItem;
+    @FXML
+    private MenuItem modificarMenuItem;
+    @FXML
+    private MenuItem ayudaMenuItem;
 
     @FXML
     public void initialize() {
         configurarChoiceBox();
         configurarBotones();
         cargarLogo();
+        configurarMenu();
     }
 
+    private void configurarMenu() {
+        // Configurar acción para "Consultar"
+        consultarMenuItem.setOnAction(event -> abrirVentanaConsulta());
+
+        // Configurar acción para "Eliminar" (ejemplo)
+        eliminarMenuItem.setOnAction(event -> {
+            mostrarAlerta("Eliminar", "Funcionalidad en desarrollo");
+        });
+
+        // Configurar acción para "Modificar" (ejemplo)
+        modificarMenuItem.setOnAction(event -> {
+            mostrarAlerta("Modificar", "Funcionalidad en desarrollo");
+        });
+        ayudaMenuItem.setOnAction(event -> ventanaAyuda());
+    }
+
+    private void ventanaAyuda(){
+        AyudaView ventanaAyuda = new AyudaView();
+        ventanaAyuda.mostrar("Ventana de ayuda","Para atender asustos relacionados \na la institucion " +
+                "le recomendamos asistir de forma presensial \nsi no puede llevar acabo esta accion o prefiere un trato a distancia" +
+                "puede llamar a nuestra linea de ayuda al sigueite numero 715 120 16 04");
+    }
+    private void abrirVentanaConsulta() {
+        try {
+            // Cargar el FXML de la ventana de consulta
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/ConsultaProspectos.fxml"));
+            Parent root = loader.load();
+
+            // Crear una nueva escena
+            Scene scene = new Scene(root, 800, 650);
+
+            // Crear un nuevo Stage (ventana)
+            Stage stage = new Stage();
+            stage.setTitle("Consulta de Prospectos");
+            stage.setScene(scene);
+
+
+            // Mostrar la ventana
+            stage.show();
+
+            System.out.println("✅ Ventana de consulta abierta");
+
+        } catch (Exception e) {
+            System.err.println("❌ Error al abrir la ventana de consulta: " + e.getMessage());
+            e.printStackTrace();
+            mostrarAlerta("Error", "No se pudo abrir la ventana de consulta: " + e.getMessage());
+        }
+    }
     private void configurarChoiceBox() {
         afiliacionChoiceBox.getItems().setAll(Afiliacion.values());
         afiliacionChoiceBox.setValue(Afiliacion.IMSS);
@@ -68,6 +131,7 @@ public class RegistroController {
     private void configurarBotones() {
         realizarButton.setOnAction(event -> realizarCotizacion());
         cancelarButton.setOnAction(event -> cancelar());
+
     }
 
     private void realizarCotizacion() {
@@ -156,4 +220,5 @@ public class RegistroController {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
 }
