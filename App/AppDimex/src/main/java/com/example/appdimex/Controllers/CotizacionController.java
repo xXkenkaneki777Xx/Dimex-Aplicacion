@@ -3,6 +3,7 @@ package com.example.appdimex.Controllers;
 import com.example.appdimex.Enums.Cobro;
 import com.example.appdimex.Enums.TipoTransaccion;
 import com.example.appdimex.model.PlanPago;
+import com.example.appdimex.util.ConfiguracionTasas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,10 +49,50 @@ public class CotizacionController {
 
     @FXML
     public void initialize() {
+        cargarLogo();
+
+        // 1. Llenar el ChoiceBox con los valores del Enum
+        tipoCobroChoiceBox.getItems().clear();
+        tipoCobroChoiceBox.getItems().addAll(Cobro.values()); // O TipoCobro.NOMINA, TipoCobro.DOMICILIADO
+
+        // 2. Escuchar el cambio recibiendo el objeto Enum en lugar de un String
+        tipoCobroChoiceBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                actualizarTasasInteres(newVal);
+            }
+        });
+
+        tazaInteresChoiceBox.setConverter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double object) {
+                return object == null ? "" : object + "%";
+            }
+
+            @Override
+            public Double fromString(String string) {
+                return null; // No es necesario implementar esto para un ChoiceBox
+            }
+        });
         configurarChoiceBox();
         configurarTabla();
         configurarBotones();
         cargarLogo();
+    }
+
+    private void actualizarTasasInteres(Cobro tipoCobro) {
+        if (tipoCobro == null) return;
+
+        tazaInteresChoiceBox.getItems().clear();
+
+        if (tipoCobro == Cobro.Domiciliado) {
+            tazaInteresChoiceBox.getItems().addAll(ConfiguracionTasas.getTasasDomiciliado());
+        } else if (tipoCobro == Cobro.Nomina) {
+            tazaInteresChoiceBox.getItems().addAll(ConfiguracionTasas.getTasasNomina());
+        }
+
+        if (!tazaInteresChoiceBox.getItems().isEmpty()) {
+            tazaInteresChoiceBox.setValue(tazaInteresChoiceBox.getItems().get(0));
+        }
     }
 
     private void configurarChoiceBox() {
@@ -91,21 +132,7 @@ public class CotizacionController {
         cantidadTextField.clear();
     }
 
-    private void actualizarTasasInteres(Cobro tipoCobro) {
-        if (tipoCobro == null) return;
 
-        tazaInteresChoiceBox.getItems().clear();
-
-        if (tipoCobro == Cobro.Domiciliado) {
-            tazaInteresChoiceBox.getItems().addAll(85.0, 90.0, 95.0, 100.0, 105.0);
-        } else if (tipoCobro == Cobro.Nomina) {
-            tazaInteresChoiceBox.getItems().addAll(28.6, 31.8);
-        }
-
-        if (!tazaInteresChoiceBox.getItems().isEmpty()) {
-            tazaInteresChoiceBox.setValue(tazaInteresChoiceBox.getItems().get(0));
-        }
-    }
 
     private void configurarTabla() {
         columnaMeses.setCellValueFactory(new PropertyValueFactory<>("meses"));

@@ -4,10 +4,14 @@ import com.example.appdimex.DB.LoginDao;
 import com.example.appdimex.model.Usuario;
 import com.example.appdimex.Views.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
 
@@ -97,10 +101,32 @@ public class LoginController {
     }
 
     private void abrirVentanaAdmin(Usuario usuario) {
-
+        navegarAlMain(usuario);
     }
 
     private void abrirVentanaProspecto(Usuario usuario) {
+        navegarAlMain(usuario);
+    }
 
+    private void navegarAlMain(Usuario usuario) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/main-view.fxml"));
+            Parent root = loader.load();
+
+            // 1. Obtener la instancia de MainController que acaba de cargarse
+            MainController mainController = loader.getController();
+
+            // 2. Enviar el usuario logueado al MainController
+            mainController.setUsuarioLogueado(usuario);
+
+            // 3. Reemplazar la escena actual
+            Stage stage = (Stage) ingresarButton.getScene().getWindow();
+            stage.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            mensajeLabel.setText("Error al cargar la pantalla principal");
+            mensajeLabel.setStyle("-fx-text-fill: red;");
+        }
     }
 }

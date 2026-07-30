@@ -19,11 +19,11 @@
         <Label alignment="CENTER" layoutX="99.0" layoutY="24.0" prefHeight="17.0" prefWidth="250.0" text="Consulta de Prospectos" />
 
         <!-- Menú -->
-        <MenuButton layoutX="700.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Menú">
+        <MenuButton layoutX="235.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Menú">
             <items>
-                <MenuItem mnemonicParsing="false" text="Registrar" />
-                <MenuItem mnemonicParsing="false" text="Eliminar" />
-                <MenuItem mnemonicParsing="false" text="Modificar" />
+                <MenuItem fx:id="registrarProspectoMenuItem" mnemonicParsing="false" onAction="#abrirRegistroProspecto" text="Registrar Prospecto" />
+                <MenuItem fx:id="ayudaMenuItem" mnemonicParsing="false" text="Ayuda" />
+                <MenuItem fx:id="regresarMenuItem" mnemonicParsing="false" onAction="#regresarAlMain" text="Regresar al menú" />
             </items>
         </MenuButton>
 

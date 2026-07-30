@@ -14,11 +14,11 @@
                     </children>
                 </Pane>
 
-                <MenuButton layoutX="245.0" layoutY="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="80.0" text="Menú">
+                <MenuButton layoutX="235.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Menú">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Consultar" />
-                        <MenuItem mnemonicParsing="false" text="Eliminar" />
-                        <MenuItem mnemonicParsing="false" text="Modificar" />
+                        <MenuItem fx:id="registrarProspectoMenuItem" mnemonicParsing="false" text="Registrar Prospecto" />
+                        <MenuItem fx:id="ayudaMenuItem" mnemonicParsing="false" text="Ayuda" />
+                        <MenuItem fx:id="regresarMenuItem" mnemonicParsing="false" text="Regresar al menú" />
                     </items>
                 </MenuButton>
 
@@ -29,6 +29,8 @@
                 <Button fx:id="consProspectos" layoutX="180.0" layoutY="280.0" mnemonicParsing="false" onAction="#abrirConsultaProspectos" prefHeight="90.0" prefWidth="135.0" styleClass="btn-action" text="Consultar&#10;Prospectos" textAlignment="CENTER" wrapText="true" />
 
                 <Button fx:id="cotizarButton" layoutX="25.0" layoutY="410.0" mnemonicParsing="false" onAction="#abrirCotizacion" prefHeight="75.0" prefWidth="290.0" styleClass="btn-highlight" text="Cotización Express" textAlignment="CENTER" wrapText="true" />
+                <!-- Botón exclusivo para Administrador -->
+                <Button fx:id="cambiarTasasButton" layoutX="25.0" layoutY="500.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="290.0" styleClass="btn-action" text="Cambiar Tasas" visible="false" managed="false" onAction="#abrirCambiarTasas" />
             </children>
         </AnchorPane>
     </children>

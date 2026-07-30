@@ -5,12 +5,17 @@ import com.example.appdimex.Enums.Afiliacion;
 import com.example.appdimex.model.Prospecto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -88,6 +93,38 @@ public class CPController {
             }
         } catch (Exception e) {
             System.err.println("Error al cargar logo: " + e.getMessage());
+        }
+    }
+    @FXML
+    private void regresarAlMain(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/main-view.fxml"));
+            Parent root = loader.load();
+
+            // En MenuItem obtenemos el Stage a través del menú desplegable (ParentPopup)
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+
+            stage.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void abrirRegistroProspecto(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/RegistroP.fxml"));
+            Parent root = loader.load();
+
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+
+            stage.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

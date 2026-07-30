@@ -4,6 +4,7 @@ import com.example.appdimex.DB.ProspectoDao;
 import com.example.appdimex.Enums.Afiliacion;
 import com.example.appdimex.Views.AyudaView;
 import com.example.appdimex.model.Prospecto;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,6 +44,12 @@ public class RegistroController {
     private Button realizarButton;
 
     @FXML
+    private MenuItem registrarProspectoMenuItem;
+
+    @FXML
+    private MenuItem ayudaMenuItem;
+
+    @FXML
     private Button cancelarButton;
     @FXML
     private MenuItem consultarMenuItem;
@@ -51,7 +58,7 @@ public class RegistroController {
     @FXML
     private MenuItem modificarMenuItem;
     @FXML
-    private MenuItem ayudaMenuItem;
+    private MenuItem regresarMenuItem;
 
     @FXML
     public void initialize() {
@@ -60,21 +67,59 @@ public class RegistroController {
         cargarLogo();
         configurarMenu();
     }
+    @FXML
+    private void regresarAlMain(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/appdimex/main-view.fxml"));
+            Parent root = loader.load();
+
+            // En MenuItem obtenemos el Stage a través del menú desplegable (ParentPopup)
+            MenuItem menuItem = (MenuItem) event.getSource();
+            Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+
+            stage.getScene().setRoot(root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void configurarMenu() {
-        // Configurar acción para "Consultar"
-        consultarMenuItem.setOnAction(event -> abrirVentanaConsulta());
+        if (registrarProspectoMenuItem != null) {
+            registrarProspectoMenuItem.setOnAction(event -> abrirRegistroProspecto());
+        }
 
-        // Configurar acción para "Eliminar" (ejemplo)
-        eliminarMenuItem.setOnAction(event -> {
-            mostrarAlerta("Eliminar", "Funcionalidad en desarrollo");
-        });
+        if (ayudaMenuItem != null) {
+            ayudaMenuItem.setOnAction(event -> ventanaAyuda());
+        }
 
-        // Configurar acción para "Modificar" (ejemplo)
-        modificarMenuItem.setOnAction(event -> {
-            mostrarAlerta("Modificar", "Funcionalidad en desarrollo");
-        });
-        ayudaMenuItem.setOnAction(event -> ventanaAyuda());
+        if (regresarMenuItem != null) {
+            regresarMenuItem.setOnAction(event -> regresarAlMain());
+        }
+    }
+
+    private void abrirRegistroProspecto() {
+        navegarA("/com/example/appdimex/RegistroP.fxml");
+    }
+
+    private void regresarAlMain() {
+        navegarA("/com/example/appdimex/main-view.fxml");
+    }
+
+    // Método auxiliar seguro para cambiar de vista desde cualquier lugar de esta pantalla
+    private void navegarA(String rutaFxml) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFxml));
+            Parent root = loader.load();
+
+            // En lugar de usar el evento del MenuItem, obtenemos la ventana desde el Logo
+            Stage stage = (Stage) logoImageView.getScene().getWindow();
+            stage.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error al cargar la vista " + rutaFxml + ": " + e.getMessage());
+        }
     }
 
     private void ventanaAyuda(){
