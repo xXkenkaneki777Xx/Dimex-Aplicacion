@@ -1,10 +1,13 @@
 package com.example.appdimex;
 
+import com.example.appdimex.util.Estilos;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class Main extends Application {
     @Override
@@ -17,6 +20,8 @@ public class Main extends Application {
 
 
             Scene scene = new Scene(root, 340, 650);
+
+            Estilos.aplicar(scene);
 
 
             primaryStage.setTitle("Cotización Express");

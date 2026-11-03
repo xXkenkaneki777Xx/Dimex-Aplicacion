@@ -3,6 +3,7 @@ package com.example.appdimex.Controllers;
 import com.example.appdimex.DB.LoginDao;
 import com.example.appdimex.model.Usuario;
 import com.example.appdimex.Views.*;
+import com.example.appdimex.util.Estilos;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
