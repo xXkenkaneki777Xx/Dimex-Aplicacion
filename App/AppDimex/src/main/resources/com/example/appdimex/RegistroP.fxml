@@ -9,56 +9,136 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="650.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appdimex.Controllers.RegistroController">
-    <children>
-        <Pane id="logo" layoutX="14.0" layoutY="14.0" prefHeight="50.0" prefWidth="50.0">
-            <ImageView fx:id="logoImageView" fitHeight="50" fitWidth="50" preserveRatio="true" />
-        </Pane>
+<VBox alignment="TOP_CENTER"
+      spacing="15.0"
+      prefHeight="650.0"
+      prefWidth="340.0"
+      fillWidth="true"
+      styleClass="ventana-principal"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.appdimex.Controllers.RegistroController">
 
-        <Label alignment="CENTER" layoutX="89.0" layoutY="14.0" prefHeight="17.0" prefWidth="162.0" text="Registro de Prospectos" />
+    <!-- ENCABEZADO -->
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
 
-        <!-- Menú -->
-        <MenuButton layoutX="235.0" layoutY="19.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Menú">
+        <ImageView fx:id="logoImageView"
+                   fitHeight="50.0"
+                   fitWidth="50.0"
+                   preserveRatio="true"/>
+
+        <Label text="Registro de Prospectos"
+               styleClass="titulo-secundario"
+               maxWidth="Infinity"
+               HBox.hgrow="ALWAYS"/>
+
+        <MenuButton mnemonicParsing="false"
+                    text="Menú">
             <items>
-                <MenuItem fx:id="registrarProspectoMenuItem" mnemonicParsing="false" text="Registrar Prospecto" />
-                <MenuItem fx:id="ayudaMenuItem" mnemonicParsing="false" text="Ayuda" />
-                <MenuItem fx:id="regresarMenuItem" mnemonicParsing="false" text="Regresar al menú" />
+                <MenuItem fx:id="registrarProspectoMenuItem"
+                          mnemonicParsing="false"
+                          text="Registrar Prospecto"/>
+
+                <MenuItem fx:id="ayudaMenuItem"
+                          mnemonicParsing="false"
+                          text="Ayuda"/>
+
+                <MenuItem fx:id="regresarMenuItem"
+                          mnemonicParsing="false"
+                          text="Regresar al menú"/>
             </items>
         </MenuButton>
 
-        <!-- Nombre -->
-        <Label layoutX="25.0" layoutY="93.0" prefHeight="17.0" prefWidth="71.0" text="Nombre(s):" />
-        <TextField fx:id="nombreTextField" layoutX="90.0" layoutY="89.0" prefHeight="25.0" prefWidth="210.0" />
+    </HBox>
 
-        <!-- Apellidos -->
-        <Label layoutX="25.0" layoutY="123.0" prefHeight="17.0" prefWidth="71.0" text="Apellidos:" />
-        <TextField fx:id="apellidosTextField" layoutX="90.0" layoutY="119.0" prefHeight="25.0" prefWidth="210.0" />
+    <!-- FORMULARIO -->
+    <VBox spacing="10.0" fillWidth="true">
 
-        <!-- Teléfono -->
-        <Label layoutX="25.0" layoutY="158.0" prefHeight="17.0" prefWidth="71.0" text="Teléfono:" />
-        <TextField fx:id="telefonoTextField" layoutX="90.0" layoutY="154.0" prefHeight="25.0" prefWidth="150.0" />
+        <!-- NOMBRE -->
+        <VBox spacing="4.0">
+            <Label text="Nombre(s):"/>
+            <TextField fx:id="nombreTextField"
+                       prefHeight="36.0"
+                       promptText="Ingresa el nombre"/>
+        </VBox>
 
-        <!-- Afiliación -->
-        <Label layoutX="25.0" layoutY="206.0" prefHeight="17.0" prefWidth="71.0" text="Afiliación:" />
-        <ChoiceBox fx:id="afiliacionChoiceBox" layoutX="95.0" layoutY="201.0" prefWidth="150.0" />
+        <!-- APELLIDOS -->
+        <VBox spacing="4.0">
+            <Label text="Apellidos:"/>
+            <TextField fx:id="apellidosTextField"
+                       prefHeight="36.0"
+                       promptText="Ingresa los apellidos"/>
+        </VBox>
 
-        <!-- Banco -->
-        <Label layoutX="25.0" layoutY="249.0" prefHeight="17.0" prefWidth="98.0" text="Banco afiliado:" />
-        <TextField fx:id="bancoTextField" layoutX="110.0" layoutY="245.0" prefHeight="25.0" prefWidth="150.0" />
+        <!-- TELÉFONO -->
+        <VBox spacing="4.0">
+            <Label text="Teléfono:"/>
+            <TextField fx:id="telefonoTextField"
+                       prefHeight="36.0"
+                       promptText="Número telefónico"/>
+        </VBox>
 
-        <!-- Fecha Nacimiento -->
-        <Label layoutX="15.0" layoutY="310.0" prefHeight="17.0" prefWidth="128.0" text="Fecha de Nacimiento:" />
-        <DatePicker fx:id="fechaNacimientoDatePicker" layoutX="143.0" layoutY="306.0" prefWidth="150.0" />
+        <!-- AFILIACIÓN -->
+        <VBox spacing="4.0">
+            <Label text="Afiliación:"/>
+            <ChoiceBox fx:id="afiliacionChoiceBox"
+                       prefHeight="36.0"
+                       maxWidth="Infinity"/>
+        </VBox>
 
-        <!-- Dirección -->
-        <Label layoutX="15.0" layoutY="361.0" prefHeight="17.0" prefWidth="128.0" text="Dirección:" />
-        <TextArea fx:id="direccionTextArea" layoutX="15.0" layoutY="392.0" prefHeight="91.0" prefWidth="311.0" />
+        <!-- BANCO -->
+        <VBox spacing="4.0">
+            <Label text="Banco afiliado:"/>
+            <TextField fx:id="bancoTextField"
+                       prefHeight="36.0"
+                       promptText="Nombre del banco"/>
+        </VBox>
 
-        <!-- Botones -->
-        <Button fx:id="realizarButton" layoutX="33.0" layoutY="577.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Realizar" />
-        <Button fx:id="cancelarButton" layoutX="207.0" layoutY="577.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Cancelar" />
-    </children>
-</AnchorPane>
+        <!-- FECHA DE NACIMIENTO -->
+        <VBox spacing="4.0">
+            <Label text="Fecha de nacimiento:"/>
+            <DatePicker fx:id="fechaNacimientoDatePicker"
+                        prefHeight="36.0"
+                        maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- DIRECCIÓN -->
+        <VBox spacing="4.0">
+            <Label text="Dirección:"/>
+            <TextArea fx:id="direccionTextArea"
+                      prefHeight="90.0"
+                      minHeight="90.0"
+                      wrapText="true"
+                      promptText="Ingresa la dirección"/>
+        </VBox>
+
+    </VBox>
+
+    <!-- ESPACIO FLEXIBLE -->
+    <Region VBox.vgrow="ALWAYS"/>
+
+    <!-- BOTONES -->
+    <HBox alignment="CENTER"
+          spacing="20.0">
+
+        <Button fx:id="realizarButton"
+                text="Realizar"
+                mnemonicParsing="false"
+                prefWidth="115.0"
+                prefHeight="40.0"
+                styleClass="button-exito"/>
+
+        <Button fx:id="cancelarButton"
+                text="Cancelar"
+                mnemonicParsing="false"
+                prefWidth="115.0"
+                prefHeight="40.0"
+                styleClass="button-peligro"/>
+
+    </HBox>
+
+</VBox>

@@ -1,28 +1,75 @@
+
 package com.example.appdimex.Controllers;
 
-import com.example.appdimex.DB.ProspectoDao;
-import com.example.appdimex.model.Prospecto;
+import com.example.appdimex.model.Usuario;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ProspectoController {
 
     @FXML
-    private void registrarProducto() {
-        // tu código aquí
-    }
-    @FXML
     private Label welcomeText;
+
+    private Usuario usuarioLogueado;
+
+    public void setUsuarioLogueado(Usuario usuario) {
+        this.usuarioLogueado = usuario;
+    }
+
+    @FXML
+    private void registrarProducto() {
+
+    }
+
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
-//    @FXML
-//    public void initialize() {
-//        System.out.println("Inicializando ventana y registrando prospecto de prueba...");
-//        Prospecto nuevoProspecto = new Prospecto("Carlos Mendoza", 12500, "Av. Hidalgo 456, Col. Centro");
-//        ProspectoDao prospectoDao = new ProspectoDao();
-//        prospectoDao.registrar(nuevoProspecto);
-//    }
+    @FXML
+    private void regresarAlMain(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/com/example/appdimex/main-view.fxml"
+                    )
+            );
+
+            Parent root = loader.load();
+
+            MainController mainController = loader.getController();
+
+            mainController.setUsuarioLogueado(usuarioLogueado);
+
+            Stage stage = (Stage) ((Node) event.getSource())
+                    .getScene().getWindow();
+
+            stage.getScene().setRoot(root);
+
+            stage.setWidth(340);
+            stage.setHeight(650);
+            stage.centerOnScreen();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(
+                    "No se pudo regresar a la pantalla principal: "
+                            + e.getMessage()
+            );
+            alert.showAndWait();
+        }
+    }
 }

@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="650.0" prefWidth="340.0" stylesheets="@EstiloMain.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appdimex.Controllers.CambiarTasasController">
+<AnchorPane prefHeight="650.0" prefWidth="340.0" stylesheets="@EstiloMain1.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.appdimex.Controllers.CambiarTasasController">
     <children>
         <Pane id="logo" layoutX="16.0" layoutY="16.0" prefHeight="50.0" prefWidth="50.0" styleClass="logo-container">
             <children>

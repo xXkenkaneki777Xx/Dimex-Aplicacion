@@ -8,7 +8,7 @@ module com.example.appdimex {
     requires org.kordamp.ikonli.javafx;
     requires java.sql;
     requires java.desktop;
-    requires com.example.appdimex;
+    //requires com.example.appdimex;
 
 
     opens com.example.appdimex.model to javafx.base, javafx.fxml;

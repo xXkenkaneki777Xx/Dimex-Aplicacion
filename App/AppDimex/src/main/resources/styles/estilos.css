@@ -1,3 +1,8 @@
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-background-color: #0B1120;
@@ -11,6 +16,10 @@
 .ventana-login {
     -fx-background-color: #0B1120;
 }
+
+/* =========================================
+   TÍTULOS Y ETIQUETAS
+========================================= */
 
 .titulo-principal {
     -fx-font-size: 24px;
@@ -31,6 +40,12 @@
     -fx-font-weight: bold;
     -fx-text-fill: #CBD5E1;
     -fx-padding: 10px 0;
+}
+
+.welcome-label {
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #F1F5F9;
 }
 
 .label {
@@ -56,7 +71,13 @@
     -fx-font-weight: bold;
 }
 
-.text-field, .password-field, .text-area {
+/* =========================================
+   CAMPOS DE TEXTO
+========================================= */
+
+.text-field,
+.password-field,
+.text-area {
     -fx-background-color: #151F32;
     -fx-text-fill: #F1F5F9;
     -fx-prompt-text-fill: #64748B;
@@ -68,17 +89,22 @@
     -fx-font-size: 14px;
 }
 
-.text-field:hover, .password-field:hover, .text-area:hover {
+.text-field:hover,
+.password-field:hover,
+.text-area:hover {
     -fx-border-color: #3B82F6;
 }
 
-.text-field:focused, .password-field:focused, .text-area:focused {
+.text-field:focused,
+.password-field:focused,
+.text-area:focused {
     -fx-border-color: #3B82F6;
     -fx-border-width: 1.5px;
     -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.18), 8, 0, 0, 0);
 }
 
-.text-field-login, .password-field-login {
+.text-field-login,
+.password-field-login {
     -fx-background-color: #151F32;
     -fx-text-fill: #F1F5F9;
     -fx-prompt-text-fill: #64748B;
@@ -89,10 +115,15 @@
     -fx-font-size: 14px;
 }
 
-.text-field-login:focused, .password-field-login:focused {
+.text-field-login:focused,
+.password-field-login:focused {
     -fx-border-color: #3B82F6;
     -fx-border-width: 1.5px;
 }
+
+/* =========================================
+   BOTONES GENERALES
+========================================= */
 
 .button {
     -fx-background-color: #2563EB;
@@ -101,8 +132,10 @@
     -fx-font-size: 14px;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-padding: 9px 20px;
+    -fx-padding: 10px 18px;
+    -fx-min-height: 35px;
     -fx-cursor: hand;
+    -fx-wrap-text: true;
 }
 
 .button:hover {
@@ -114,18 +147,22 @@
     -fx-background-color: #1D4ED8;
 }
 
+/* BOTÓN PRIMARIO */
+
 .button-primario {
     -fx-background-color: #2563EB;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-padding: 12px 30px;
+    -fx-padding: 12px 25px;
     -fx-background-radius: 8px;
 }
 
 .button-primario:hover {
     -fx-background-color: #3B82F6;
 }
+
+/* BOTÓN SECUNDARIO */
 
 .button-secundario {
     -fx-background-color: #263449;
@@ -136,6 +173,8 @@
     -fx-background-color: #334155;
 }
 
+/* BOTÓN ÉXITO */
+
 .button-exito {
     -fx-background-color: #059669;
 }
@@ -143,6 +182,8 @@
 .button-exito:hover {
     -fx-background-color: #10B981;
 }
+
+/* BOTÓN PELIGRO */
 
 .button-peligro {
     -fx-background-color: #DC2626;
@@ -152,12 +193,14 @@
     -fx-background-color: #EF4444;
 }
 
+/* BOTÓN LOGIN */
+
 .button-login {
     -fx-background-color: #2563EB;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-padding: 12px 40px;
+    -fx-padding: 12px 30px;
     -fx-background-radius: 8px;
     -fx-cursor: hand;
 }
@@ -165,6 +208,139 @@
 .button-login:hover {
     -fx-background-color: #3B82F6;
 }
+
+/* =========================================
+   BOTONES DEL MENÚ PRINCIPAL
+========================================= */
+
+.btn-action {
+    -fx-background-color: #172C49;
+    -fx-text-fill: #F1F5F9;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 12px;
+    -fx-cursor: hand;
+}
+
+.btn-action:hover {
+    -fx-background-color: #263F63;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.20), 10, 0, 0, 2);
+}
+
+.btn-highlight {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 12px 20px;
+    -fx-cursor: hand;
+}
+
+.btn-highlight:hover {
+    -fx-background-color: #3B82F6;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.30), 12, 0, 0, 2);
+}
+
+.logo-container {
+    -fx-background-color: transparent;
+}
+
+/* =========================================
+   MENÚ DESPLEGABLE
+========================================= */
+
+/* Botón que despliega el menú */
+
+.menu-button {
+    -fx-background-color: #172C49;
+    -fx-text-fill: #F1F5F9;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 6px 8px;
+    -fx-pref-width: 110px;
+    -fx-min-width: 110px;
+    -fx-min-height: 35px;
+    -fx-mark-color: #CBD5E1;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #263F63;
+}
+
+.menu-button:showing {
+    -fx-background-color: #263F63;
+}
+
+/* Eliminar fondo y margen blanco del menú */
+
+.context-menu {
+    -fx-background-color: #111B2E;
+    -fx-background-insets: 0;
+    -fx-background-radius: 7px;
+    -fx-border-color: #334155;
+    -fx-border-width: 1px;
+    -fx-border-radius: 7px;
+    -fx-padding: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 10, 0, 0, 3);
+}
+
+/* Opciones del menú */
+
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 10px 14px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* Texto de las opciones */
+
+.context-menu .menu-item .label {
+    -fx-text-fill: #CBD5E1;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Al pasar el cursor */
+
+.context-menu .menu-item:hover,
+.context-menu .menu-item:focused {
+    -fx-background-color: #2563EB;
+    -fx-background-radius: 5px;
+}
+
+.context-menu .menu-item:hover .label,
+.context-menu .menu-item:focused .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Opción deshabilitada */
+
+.context-menu .menu-item:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* Separadores del menú */
+
+.context-menu .separator {
+    -fx-padding: 3px 8px;
+}
+
+.context-menu .separator .line {
+    -fx-border-color: #263449;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* =========================================
+   TABLAS
+========================================= */
 
 .table-view {
     -fx-background-color: #111B2E;
@@ -214,32 +390,13 @@
     -fx-fill: #FFFFFF;
 }
 
-.menu-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #CBD5E1;
-    -fx-font-weight: 500;
+.table-view .placeholder .label {
+    -fx-text-fill: #64748B;
 }
 
-.menu-button:hover {
-    -fx-background-color: #263449;
-}
-
-.menu-item {
-    -fx-background-color: #151F32;
-    -fx-padding: 9px 20px;
-}
-
-.menu-item .label {
-    -fx-text-fill: #CBD5E1;
-}
-
-.menu-item:hover {
-    -fx-background-color: #2563EB;
-}
-
-.menu-item:hover .label {
-    -fx-text-fill: #FFFFFF;
-}
+/* =========================================
+   CHOICE BOX
+========================================= */
 
 .choice-box {
     -fx-background-color: #151F32;
@@ -259,8 +416,12 @@
 }
 
 .choice-box .context-menu {
-    -fx-background-color: #151F32;
+    -fx-background-color: #111B2E;
 }
+
+/* =========================================
+   DATE PICKER
+========================================= */
 
 .date-picker {
     -fx-background-color: #151F32;
@@ -283,6 +444,10 @@
     -fx-background-color: #CBD5E1;
 }
 
+/* =========================================
+   SCROLL PANE
+========================================= */
+
 .scroll-pane {
     -fx-background-color: #0B1120;
     -fx-border-color: transparent;
@@ -292,10 +457,18 @@
     -fx-background-color: #0B1120;
 }
 
+/* =========================================
+   SEPARADORES
+========================================= */
+
 .separador {
     -fx-background-color: #263449;
     -fx-pref-height: 1px;
 }
+
+/* =========================================
+   MENSAJES
+========================================= */
 
 .mensaje-info {
     -fx-background-color: #172C49;
@@ -318,6 +491,10 @@
     -fx-background-radius: 7px;
 }
 
+/* =========================================
+   PANELES
+========================================= */
+
 .panel {
     -fx-background-color: #111B2E;
     -fx-border-color: #263449;
@@ -331,25 +508,40 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 3);
 }
 
+/* =========================================
+   IMÁGENES
+========================================= */
+
 .image-view {
     -fx-border-radius: 50%;
     -fx-background-radius: 50%;
 }
 
+/* =========================================
+   ANIMACIONES
+========================================= */
+
 .fade-in {
     -fx-opacity: 1;
 }
 
-.scroll-bar:vertical, .scroll-bar:horizontal {
+/* =========================================
+   BARRAS DE DESPLAZAMIENTO
+========================================= */
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
     -fx-background-color: transparent;
 }
 
-.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
     -fx-background-color: #334155;
     -fx-background-radius: 10px;
 }
 
-.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
     -fx-background-color: #475569;
 }
 
@@ -357,9 +549,14 @@
     -fx-background-color: transparent;
 }
 
-.scroll-bar .increment-button, .scroll-bar .decrement-button {
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
     -fx-background-color: transparent;
 }
+
+/* =========================================
+   TOOLTIP
+========================================= */
 
 .tooltip {
     -fx-background-color: #1E293B;
@@ -368,6 +565,10 @@
     -fx-background-radius: 6px;
     -fx-font-size: 12px;
 }
+
+/* =========================================
+   CHECKBOX
+========================================= */
 
 .check-box {
     -fx-font-size: 14px;
@@ -390,6 +591,10 @@
     -fx-background-color: #FFFFFF;
 }
 
+/* =========================================
+   TEXT AREA
+========================================= */
+
 .text-area {
     -fx-control-inner-background: #151F32;
 }
@@ -404,4 +609,35 @@
 
 .text-area .text {
     -fx-fill: #F1F5F9;
+}
+
+
+/* COTIZACIÓN EXPRESS */
+
+.cotizacion-cantidad {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.choice-box {
+    -fx-min-height: 36px;
+}
+
+.table-view {
+    -fx-column-resize-policy: constrained-resize;
+}
+
+.table-view .column-header {
+    -fx-size: 38px;
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+}
+
+.button-exito,
+.button-secundario {
+    -fx-min-height: 42px;
+    -fx-font-size: 13px;
 }
